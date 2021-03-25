@@ -1,0 +1,22 @@
+* {
+  color: rgb(213, 212, 212);
+  background-color: black;
+}
+
+.inputFields {
+  width: 400px;
+  height: 200px;
+  border: 1px solid red;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  border: 1px solid blue;
+}
+.submit {
+  width: 200px;
+}
