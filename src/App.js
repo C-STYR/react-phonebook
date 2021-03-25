@@ -1,18 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import './App.css';
 import React from 'react';
 
 
 function App() {
-  const entries = [{
-    firstName: "papa",
-    lastName: "bear",
-    phone: "bearphone"
-  }];
+
+  const [entries, setEntries] = useState([])
+
   return (
     <div className="App">
-      <Inputs entries={entries}/>
+      <Inputs  entries={entries} setEntries={setEntries}/>
       <PhoneBook entries={entries}/>
     </div>
   );
@@ -41,8 +39,9 @@ function Inputs(props) {
       "lastName": state.lastName,
       "phone": state.phone
     };
-
-    props.entries.push(entryData);
+    const values = [...props.entries]
+    values.push(entryData)
+    props.setEntries(values)
     console.log("entries =>", props.entries);
   }
  
@@ -67,13 +66,6 @@ function Inputs(props) {
   )
 }
 
-const test = [
-  <tr>
-    <td>1</td>
-    <td>2</td>
-    <td>3</td>
-  </tr>,
-]
 
 function PhoneBook(props) {
 
@@ -87,7 +79,6 @@ function PhoneBook(props) {
       )
       return row
   })
-  console.log("entry", entry)
   
   return (
     <div className="phoneBook">
@@ -98,8 +89,12 @@ function PhoneBook(props) {
           </tr>
         </thead>
         <tbody>
+          <tr>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Phone</td>
+          </tr>
           {entry}
-          {test}
         </tbody>
       </table>
     </div>
