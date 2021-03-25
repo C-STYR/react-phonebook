@@ -10,7 +10,7 @@ function App() {
 
   return (
     <div className="App">
-      <Inputs  entries={entries} setEntries={setEntries}/>
+      <Inputs entries={entries} setEntries={setEntries}/>
       <PhoneBook entries={entries}/>
     </div>
   );
@@ -39,10 +39,10 @@ function Inputs(props) {
       "lastName": state.lastName,
       "phone": state.phone
     };
+
     const values = [...props.entries]
     values.push(entryData)
     props.setEntries(values)
-    console.log("entries =>", props.entries);
   }
  
   return (
@@ -50,16 +50,19 @@ function Inputs(props) {
       <form onSubmit={onSubmit} className="form">
         <label>
           First Name:
-          <input onChange={onChange} type="text" name="firstName" />
+          <input onChange={onChange} type="text" name="firstName" style={{marginLeft: "10px"}}/>
         </label>
+        <br />
         <label>
           Last Name:
-          <input onChange={onChange} type="text" name="lastName" />
+          <input onChange={onChange} type="text" name="lastName" style={{marginLeft: "10px"}}/>
         </label>
+        <br />
         <label>
           Phone:
-          <input onChange={onChange} type="text" name="phone" />
+          <input onChange={onChange} type="text" name="phone" style={{marginLeft: "42px"}}/>
         </label>
+        <br />
         <input className="submit" type="submit" value="Submit"/>
       </form>
     </div>
@@ -69,9 +72,9 @@ function Inputs(props) {
 
 function PhoneBook(props) {
 
-  const entry = props.entries.map(e => {
+  const entry = props.entries.map((e, index) => {
       let row = (
-        <tr>
+        <tr key={index} >
           <td>{e.firstName}</td>
           <td>{e.lastName}</td>
           <td>{e.phone}</td>
@@ -92,7 +95,7 @@ function PhoneBook(props) {
           <tr>
             <td>First Name</td>
             <td>Last Name</td>
-            <td>Phone</td>
+            <td >Phone</td>
           </tr>
           {entry}
         </tbody>

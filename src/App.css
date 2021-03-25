@@ -1,27 +1,44 @@
 * {
-  color: rgb(213, 212, 212);
-  background-color: black;
+  color: black;
+  background-color: #fff;
 }
 
 .inputFields {
   width: 400px;
   height: 200px;
-  border: 1px solid red;
+  border: 1px solid gray;
 }
 
 .form {
+  margin-top: 20px;
+  margin-left: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
-.label {
-  border: 1px solid blue;
+
+input {
+  border-radius: 5px;
 }
+
 .submit {
-  width: 200px;
+  background-color: lightgray;
+  width: 100px;
+  margin-left: 115px;
 }
 
 .phoneBook {
-  border: 1px solid blue;
+  border: 1px solid gray;
   width: 400px;
 }
+
+table {
+  margin: auto;
+  padding: 20px;
+}
+
+td {
+  text-align: center;
+}
+
