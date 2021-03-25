@@ -5,12 +5,7 @@ import React from 'react';
 
 
 function App() {
-  const entries = [{
-    firstName: 'Cole',
-    lastName: 'Styron',
-    phone: '555-555-5555'
-  }];
-
+  const entries = [];
   return (
     <div className="App">
       <Inputs entries={entries}/>
@@ -27,7 +22,7 @@ function Inputs(props) {
   });
 
   const onChange = (e) => {
-    const {name, value } = e.target;
+    const { name, value } = e.target;
     setState((prevState) => ({
       ...prevState,
       [name]: value,
@@ -36,30 +31,31 @@ function Inputs(props) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (state.firstName.length && state.lastName.length && state.phone.length) {
-      const entryData = {
-        "firstName": state.firstName,
-        "lastName": state.lastName,
-        "phone": state.phone
-      }
-      state.entries.push(entryData)
-    }
-  }
 
+    const entryData = {
+      "firstName": state.firstName,
+      "lastName": state.lastName,
+      "phone": state.phone
+    };
+
+    props.entries.push(entryData);
+    console.log(props.entries, "I've submitted");
+  }
+ 
   return (
     <div className="inputFields" >
       <form onSubmit={onSubmit} className="form">
         <label>
           First Name:
-          <input onChange={onChange} type="text" name="first name" value={state.firstName}/>
+          <input onChange={onChange} type="text" name="firstName" />
         </label>
         <label>
           Last Name:
-          <input onChange={onChange} type="text" name="last name" value="last name"/>
+          <input onChange={onChange} type="text" name="lastName" />
         </label>
         <label>
           Phone:
-          <input onChange={onChange} type="text" name="phone" value="phone number"/>
+          <input onChange={onChange} type="text" name="phone" />
         </label>
         <input className="submit" type="submit" value="Submit"/>
       </form>
@@ -67,9 +63,32 @@ function Inputs(props) {
   )
 }
 
-function PhoneBook() {
+function PhoneBook(props) {
+
+  const display = () => {
+    const entry = props.entries.map(e => {
+      return (
+        <tr>
+          <td>props.entries.firstName</td>
+          <td>props.entries.lastName</td>
+          <td>props.entries.phone</td>
+        </tr>
+      )
+    })
+    return entry;
+  }
   return (
-    <h1>Phone Book:</h1>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th colSpan="3">Phone Book</th>
+          </tr>
+        </thead>
+        {display()}
+      </table>
+    </div>
+
   )
 }
 
