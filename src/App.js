@@ -1,11 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import './App.css';
 import React from 'react';
 
 
 function App() {
-  const entries = [];
+  const entries = [{
+    firstName: "papa",
+    lastName: "bear",
+    phone: "bearphone"
+  }];
   return (
     <div className="App">
       <Inputs entries={entries}/>
@@ -39,7 +43,7 @@ function Inputs(props) {
     };
 
     props.entries.push(entryData);
-    console.log(props.entries, "I've submitted");
+    console.log("entries =>", props.entries);
   }
  
   return (
@@ -63,33 +67,45 @@ function Inputs(props) {
   )
 }
 
+const test = [
+  <tr>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+  </tr>,
+]
+
 function PhoneBook(props) {
 
-  const display = () => {
-    const entry = props.entries.map(e => {
-      return (
+  const entry = props.entries.map(e => {
+      let row = (
         <tr>
-          <td>props.entries.firstName</td>
-          <td>props.entries.lastName</td>
-          <td>props.entries.phone</td>
+          <td>{e.firstName}</td>
+          <td>{e.lastName}</td>
+          <td>{e.phone}</td>
         </tr>
       )
-    })
-    return entry;
-  }
+      return row
+  })
+  console.log("entry", entry)
+  
   return (
-    <div>
+    <div className="phoneBook">
       <table>
         <thead>
           <tr>
             <th colSpan="3">Phone Book</th>
           </tr>
         </thead>
-        {display()}
+        <tbody>
+          {entry}
+          {test}
+        </tbody>
       </table>
     </div>
 
   )
 }
+
 
 export default App;
