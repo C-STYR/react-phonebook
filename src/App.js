@@ -6,7 +6,8 @@ import React from 'react';
 
 function App() {
 
-  const [entries, setEntries] = useState([]) //the "phone book"
+  //this array is the "phone book"
+  const [entries, setEntries] = useState([]) 
 
   return (
     <div className="App">
@@ -26,6 +27,7 @@ function Inputs(props) {
     phone: ''
   });
 
+  //sets local state to that of text field value for each input
   const onChange = (e) => {
     const { name, value } = e.target;
     setState((prevState) => ({
@@ -44,8 +46,14 @@ function Inputs(props) {
     };
 
     const values = [...props.entries]
+    
+    //adds new entry to phone book copy
     values.push(entryData);
+
+    //sorts entries by last name
     values.sort((a, b) => a.lastName > b.lastName? 1 : -1)
+
+    //replaces phonebook with updated copy
     props.setEntries(values)
   }
  
@@ -77,14 +85,13 @@ function Inputs(props) {
 function PhoneBook(props) {
 
   const entry = props.entries.map((e, index) => {
-      let row = (
+      return (
         <tr key={index} >
           <td>{e.firstName}</td>
           <td>{e.lastName}</td>
           <td>{e.phone}</td>
         </tr>
       )
-      return row
   })
   
   return (
@@ -105,7 +112,6 @@ function PhoneBook(props) {
         </tbody>
       </table>
     </div>
-
   )
 }
 
