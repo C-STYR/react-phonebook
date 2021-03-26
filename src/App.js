@@ -6,7 +6,7 @@ import React from 'react';
 
 function App() {
 
-  const [entries, setEntries] = useState([])
+  const [entries, setEntries] = useState([]) //the "phone book"
 
   return (
     <div className="App">
@@ -17,7 +17,10 @@ function App() {
 }
 
 function Inputs(props) {
-  const [state, setState] = useState({
+
+  //local state: an individual entry which will be added to 
+  //the phone book on form submit
+  const [state, setState] = useState({ 
     firstName: '',
     lastName: '',
     phone: ''
@@ -92,10 +95,10 @@ function PhoneBook(props) {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>First Name</td>
-            <td>Last Name</td>
-            <td >Phone</td>
+          <tr >
+            <td><strong>First Name</strong></td>
+            <td><strong>Last Name</strong></td>
+            <td><strong>Phone Number</strong></td>
           </tr>
           {entry}
         </tbody>
