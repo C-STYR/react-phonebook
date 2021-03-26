@@ -44,7 +44,8 @@ function Inputs(props) {
     };
 
     const values = [...props.entries]
-    values.push(entryData)
+    values.push(entryData);
+    values.sort((a, b) => a.lastName > b.lastName? 1 : -1)
     props.setEntries(values)
   }
  
