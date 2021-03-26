@@ -39,6 +39,7 @@ function Inputs(props) {
   const onSubmit = (e) => {
     e.preventDefault();
 
+    //creates new entry from input values
     const entryData = {
       "firstName": state.firstName,
       "lastName": state.lastName,
@@ -53,7 +54,7 @@ function Inputs(props) {
     //sorts entries by last name
     values.sort((a, b) => a.lastName > b.lastName? 1 : -1)
 
-    //replaces phonebook with updated copy
+    //replaces phone book with updated copy
     props.setEntries(values)
   }
  
